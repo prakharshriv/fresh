@@ -176,8 +176,18 @@ module.exports = class service {
                 if (data.hasOwnProperty(key)) {
                     if (data[key].time && data[key].time != -1 && this.checkExpiry(data[key].created, data[key].time)) {
                         console.log('key has expired.please try some other key');
-
-                        callback({ success: false, data: {} })
+                        if(delete data[key])
+                        {
+                            fs.writeFile(loc, JSON.stringify(data, null, 0), function (err) {
+                                
+                               if(err)
+                               console.log('database error in deleting expired key');
+                               callback({ success: false, data: {} })
+                            })
+                        }
+                        else
+                        callback({success:false,data:{}})
+                        
 
                     }
                     else {
@@ -210,8 +220,17 @@ delete (key, callback) {
             if (data.hasOwnProperty(key)) {
                 if (data[key].time && data[key].time != -1 && this.checkExpiry(data[key].created, data[key].time)) {
                     console.log('key has expired.please try some other key');
-
-                    callback({ success: false, data: {} })
+                    if(delete data[key])
+                    {
+                        fs.writeFile(loc, JSON.stringify(data, null, 0), function (err) {
+                            
+                           if(err)
+                           console.log('database error in deleting expired key');
+                           callback({ success: false,  })
+                        })
+                    }
+                    else
+                    callback({ success: false })
 
                 }
                 else if (delete data[key]) {

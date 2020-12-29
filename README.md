@@ -20,64 +20,68 @@ npm run test
 ##sample tests
 
 ```bash
+>tests@1.0.0 test C:\Users\user\Documents\GitHub\fresh\tests
+> mocha tests.js --recursive --exit
 
-  instantiate a file at default location
+
+
+  1)instantiate a file at default location
 C:\Users\user\Documents\GitHub\fresh/data/data.json
     √ new data.json creation at default location   
 
-  instantiate a file at custom location
+  2)instantiate a file at custom location
 ../data.json
     √ new data.json creation at custom location
 
-  create key of size less that 32 characters
+  3)create key of size less that 32 characters
 ../data.json
 Data added successfully!
     √ key added successfully
 
-  create key of size less that 32 characters and time limit 1 second
+  4)create key of size less that 32 characters and time limit 1 second
 ../data.json
 Data added successfully!
     √ key added successfully
 
-  create key of size greater that 32 characters
+  5)create key of size greater that 32 characters
 ../data.json
 key length exceeds 32 characterrs
     √ key rejected successfully
 
-  create key which already exists
+  6)create key which already exists
 ../data.json
 key already exists
     √ key rejected successfully
 
-  read key which already exists
+  7)read key which already exists
 ../data.json
 { '1': 2 }
     √ key rejected successfully
 
-  read key which does not exist
+  8)read key which does not exist
 ../data.json
 element not found
 {}
     √ key rejected successfully
 
-  create key of size less that 32 characters that has expired
+  9)create key of size less that 32 characters that has expired
 ../data.json
 Data added successfully!
     √ key added successfully
 
-  read key which has expired
+  10)read key which has expired
 ../data.json
 key has expired.please try some other key
 {}
     √ key rejected successfully
 
-  delete key which has expired
+  11)delete key which has expired
 ../data.json
-key has expired.please try some other key
-{}
+key does not exist
+undefined
     √ key rejected successfully
 
-  delete key which has not expired
+  12)delete key which has not expired
 ../data.json
 Data deleted successfully!
     √ key deleted successfully
